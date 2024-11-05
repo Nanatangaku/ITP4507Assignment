@@ -13,4 +13,5 @@ public abstract class CanUndoCommand extends Command{
         System.out.print("add to history command");
     };
     
+    public abstract void undo();
 }

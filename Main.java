@@ -1,25 +1,16 @@
 import java.util.HashMap;
-
+import java.util.Scanner;
 import Command.Command;
-
+import Command.HistoryCommand;
 import Factory.Command.CommandFactory;
 import Factory.Command.ConcreteFactory.*;
-public class Main{
-    public static void Main(String args[]){
-        HashMap<String,CommandFactory>cmdFactoryMap = new HashMap<String,CommandFactory>();
-        // 1.	Create a Player.
-        // 2.	Add a hero (Warrior or Warlock) to the current player.
-        // 3.	Remove a hero from the current player.
-        // 4.	Select a player by using a player ID.
-        // 5.	Call a hero's skill by a hero ID.
-        // 6.	Show the detail information of current player.
-        // 7.	Change the player's name of the current player.
-        // 8.	Show all players.
-        // 9.	Set current player.
-        // 10.	Undo last command.
-        // 11.	Redo the last undone command.
-        // 12.	Show undo/redo list.
-        // 13.	Exit System.
+
+public class Main {
+    public static void main(String[] args) {
+        HashMap<String, CommandFactory> cmdFactoryMap = new HashMap<String, CommandFactory>();
+        HistoryCommand historyCommand = new HistoryCommand();
+
+        // Command Map
         cmdFactoryMap.put("0", new CreatePlayerFactory());
         cmdFactoryMap.put("1", new AddHeroFactory());
         cmdFactoryMap.put("2", new RemoveHeroFactory());
@@ -33,21 +24,41 @@ public class Main{
         cmdFactoryMap.put("10", new RedoLastCommandFactory());
         cmdFactoryMap.put("11", new ShowUndoRedoListFactory());
         cmdFactoryMap.put("12", new ShowUndoRedoListFactory());
-        
+
         String command;
-        while(true){
-            System.out.print("-------------------------------------------------");
-            String message = "command list \n";
-            for(String i : cmdFactoryMap.keySet()){
+        while (true) {
+            System.out.print("-------------------------------------------------\n");
+            String message = "Command list: ";
+            for (String i : cmdFactoryMap.keySet()) {
                 String cmdName = cmdFactoryMap.get(i).getClass().getName();
                 cmdName = cmdName.substring(cmdName.lastIndexOf(".") + 1);
-                cmdName = cmdName.substring(0, cmdName.length() - 7);
-                message += i + ":" + cmdName + "  ";
-                
+                // Remove "Factory" from the end of the class name to make it more readable
+                if (cmdName.endsWith("Factory")) {
+                    cmdName = cmdName.substring(0, cmdName.length() - "Factory".length());
+                }
+                message += i + ": " + cmdName + "  ";
             }
-        }
+            System.out.print(message);
 
-        
+            System.out.print("Please input command:");
+            // read user input
+            Scanner scanner = new Scanner(System.in);
+            command = scanner.nextLine();
+            if (!cmdFactoryMap.containsKey(command)) {
+                System.out.print("Invalid command!");
+                continue;
+            }
+            // execute command
+            try {
+                Command cmd = cmdFactoryMap.get(command).createCommand();
+                if (command == null)
+                    continue;
+                cmd.execute();
+            } catch (Exception e) {
+                System.out.print(e.getMessage() + "Invalid command!");
+            }
+
+        }
 
     }
 }

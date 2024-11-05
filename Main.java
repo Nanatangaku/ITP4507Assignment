@@ -23,7 +23,7 @@ public class Main {
         cmdFactoryMap.put("9", new UndoLastCommandFactory());
         cmdFactoryMap.put("10", new RedoLastCommandFactory());
         cmdFactoryMap.put("11", new ShowUndoRedoListFactory());
-        cmdFactoryMap.put("12", new ShowUndoRedoListFactory());
+ 
 
         String command;
         while (true) {

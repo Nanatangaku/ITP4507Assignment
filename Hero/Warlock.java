@@ -1,3 +1,4 @@
+package Hero;
 public class Warlock extends Hero{
     private int mp;
     

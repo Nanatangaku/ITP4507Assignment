@@ -1,5 +1,8 @@
+package Player;
 
 import java.util.Vector;
+
+import Hero.Hero;
 
 public class Player {
     private String playerID;

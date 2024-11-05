@@ -1,3 +1,4 @@
+package Hero;
 public abstract class Hero {
     private String heroID;
     private String heroName;

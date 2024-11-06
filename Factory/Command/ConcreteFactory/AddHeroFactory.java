@@ -43,15 +43,13 @@ public class AddHeroFactory extends CanUndoCommandFactory {
   
 
         if(heroChoose.equals("0")){
-            hero = new Warlock("1", "2");
-            
-
+            hero = new Warlock(heroID, heroName);
         
-
-
-
+    }else if(heroChoose.equals("1")){
+        hero = new Warrior(heroID, heroName);
+        
     }else{
-        hero = new Warrior("1", "2");
+        System.out.print("Invalid hero type");
     }
     return new AddHero(playerManager, historyCommand, hero);
     

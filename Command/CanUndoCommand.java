@@ -1,7 +1,17 @@
 package Command;
+import Command.HistoryCommand;
+import Player.PlayerManager;
 
-public abstract class CanUndoCommand extends Command{
-
+public abstract class CanUndoCommand extends PlayerManagerCommand{
+    protected HistoryCommand historyCommand;
+    public CanUndoCommand(PlayerManager playerManager, HistoryCommand historyCommand){
+        super(playerManager);
+        if(historyCommand==null){
+            throw new IllegalArgumentException("HistoryCommand cannot be null");
+        }
+        this.historyCommand=historyCommand;
+    }
+    
     public  void execute(){
         nowExecute();
         afterExecute();
@@ -10,7 +20,7 @@ public abstract class CanUndoCommand extends Command{
     public abstract void nowExecute();
 
     public  void afterExecute(){
-        System.out.print("add to history command");
+        
     };
     
     public abstract void undo();

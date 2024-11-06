@@ -9,6 +9,13 @@ public class Player {
     private String playerName;
     private Vector<Hero> heroes;
 
+    public Player(String playerID, String playerName) {
+        this.playerID = playerID;
+        this.playerName = playerName;
+        this.heroes = new Vector<Hero>();
+    }
+
+    
     public String getPlayerID() {
         return playerID;
     }
@@ -26,14 +33,19 @@ public class Player {
     }
 
     public void addHero(Hero hero) {
-        //add your own codes
+       
+        heroes.add(hero);
+
     }
     
     public void removeHero(Hero hero) {
-        //add your own codes
+        
+        heroes.remove(hero);
     }
     
     public void showPlayerDetails(){
-        //add your own codes
+        
+        
+
     }
 }

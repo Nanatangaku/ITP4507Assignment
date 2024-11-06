@@ -1,29 +1,34 @@
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.Vector;
 import Command.Command;
 import Command.HistoryCommand;
 import Factory.Command.CommandFactory;
 import Factory.Command.ConcreteFactory.*;
+import Player.Player;
+import Player.PlayerManager;
 
 public class Main {
     public static void main(String[] args) {
         HashMap<String, CommandFactory> cmdFactoryMap = new HashMap<String, CommandFactory>();
         HistoryCommand historyCommand = new HistoryCommand();
+        PlayerManager playerManager = new PlayerManager();
+        
 
         // Command Map
-        cmdFactoryMap.put("0", new CreatePlayerFactory());
-        cmdFactoryMap.put("1", new AddHeroFactory());
-        cmdFactoryMap.put("2", new RemoveHeroFactory());
-        cmdFactoryMap.put("3", new SelectPlayerFactory());
-        cmdFactoryMap.put("4", new CallHeroSkillFactory());
-        cmdFactoryMap.put("5", new ShowPlayerDetailFactory());
-        cmdFactoryMap.put("6", new ChangePlayerNameFactory());
-        cmdFactoryMap.put("7", new ShowAllPlayersFactory());
-        cmdFactoryMap.put("8", new SetCurrentPlayerFactory());
-        cmdFactoryMap.put("9", new UndoLastCommandFactory());
-        cmdFactoryMap.put("10", new RedoLastCommandFactory());
-        cmdFactoryMap.put("11", new ShowUndoRedoListFactory());
- 
+        cmdFactoryMap.put("1", new CreatePlayerFactory(playerManager, historyCommand));
+        // cmdFactoryMap.put("1", new AddHeroFactory());
+        // cmdFactoryMap.put("2", new RemoveHeroFactory());
+        // cmdFactoryMap.put("3", new SelectPlayerFactory());
+        // cmdFactoryMap.put("4", new CallHeroSkillFactory());
+        // cmdFactoryMap.put("5", new ShowPlayerDetailFactory());
+        // cmdFactoryMap.put("6", new ChangePlayerNameFactory());
+        cmdFactoryMap.put("7", new ShowAllPlayersFactory(playerManager));
+        // cmdFactoryMap.put("8", new SetCurrentPlayerFactory());
+        cmdFactoryMap.put("9", new UndoLastCommandFactory(historyCommand));
+        // cmdFactoryMap.put("10", new RedoLastCommandFactory());
+        // cmdFactoryMap.put("11", new ShowUndoRedoListFactory());
+
 
         String command;
         while (true) {
@@ -45,7 +50,7 @@ public class Main {
             Scanner scanner = new Scanner(System.in);
             command = scanner.nextLine();
             if (!cmdFactoryMap.containsKey(command)) {
-                System.out.print("Invalid command!");
+                System.out.print("Invalid command!(Main 53)");
                 continue;
             }
             // execute command
@@ -55,7 +60,7 @@ public class Main {
                     continue;
                 cmd.execute();
             } catch (Exception e) {
-                System.out.print(e.getMessage() + "Invalid command!");
+                System.out.print(e.getMessage() + " Invalid command!(Main 63)");
             }
 
         }

@@ -1,14 +1,23 @@
 package Command.ConcreteCommand;
 
-import Command.CanUndoCommand;
 
-public class ShowAllPlayers extends CanUndoCommand{
-    
-        public void nowExecute(){
+
+import Command.Command;
+import Command.PlayerManagerCommand;
+import Player.Player;
+import Player.PlayerManager;
+
+
+public class ShowAllPlayers extends PlayerManagerCommand {
+
         
+
+        public ShowAllPlayers(PlayerManager playerManager) {
+            super(playerManager);
         }
-        public void undo(){
-    
+
+        public void execute() {
+              System.out.print(playerManager.getPlayer());
         }
-    
+
 }

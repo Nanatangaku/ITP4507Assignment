@@ -22,9 +22,8 @@ public class CreatePlayer extends CanUndoCommand{
         curPlayerID=playerManager.getCurPlayerID();
         playerManager.addPlayer(player);
         playerManager.setCurPlayer(player.getPlayerID());
-        historyCommand.addCommand(this);
-        // System.out.print(playerManager.getPlayer());
-        // System.out.print(historyCommand.getHis());
+        System.out.print(playerManager.getPlayer());
+        System.out.print(historyCommand.getHis());
     }
 
 

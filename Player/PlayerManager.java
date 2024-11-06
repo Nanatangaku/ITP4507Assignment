@@ -6,6 +6,7 @@ public class PlayerManager {
     private HashMap<String,Player> Players;
     public PlayerManager(){
         Players = new HashMap<String,Player>();
+        
     }
     public void addPlayer(Player player){
         if(player.getPlayerID() == null){
@@ -48,8 +49,8 @@ public class PlayerManager {
     }
 
     public void removePlayer(Player player){
-        if(Players.containsKey(player)){
-            Players.remove(player);
+        if(Players.containsValue(player)){
+            Players.values().remove(player);
         }else{
             System.out.println("Player does not exist");
         }

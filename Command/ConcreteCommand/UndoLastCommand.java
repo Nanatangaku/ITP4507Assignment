@@ -6,7 +6,7 @@ import Command.HistoryCommand;
 
 
 public class UndoLastCommand extends ActionofCommand{
-    HistoryCommand historyCommand;
+
 
     public UndoLastCommand(HistoryCommand historyCommand) {
         super(historyCommand);

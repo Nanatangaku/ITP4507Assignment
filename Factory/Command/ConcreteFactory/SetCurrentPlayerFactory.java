@@ -2,13 +2,20 @@ package Factory.Command.ConcreteFactory;
 
 
 import Command.Command;
-import Factory.Command.CommandFactory;
+import Command.HistoryCommand;
+import Factory.Command.CanUndoCommandFactory;
+import Factory.Command.PlayerManagerFactory;
 import Command.ConcreteCommand.SetCurrentPlayer;
 
-public class SetCurrentPlayerFactory extends CommandFactory {
+import Player.PlayerManager;
 
+public class SetCurrentPlayerFactory extends CanUndoCommandFactory {
+
+    public SetCurrentPlayerFactory(PlayerManager playerManager,HistoryCommand historyCommand) {
+        super(playerManager,historyCommand);
+    }
     public Command createCommand() {
-        return new SetCurrentPlayer();
+        return new SetCurrentPlayer(playerManager,historyCommand);
     }
     
 }

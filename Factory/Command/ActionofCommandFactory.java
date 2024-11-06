@@ -1,7 +1,6 @@
-package Factory;
+package Factory.Command;
 
 import Command.HistoryCommand;
-import Factory.Command.CommandFactory;
 
 public abstract class ActionofCommandFactory extends CommandFactory{
 
@@ -9,7 +8,7 @@ public abstract class ActionofCommandFactory extends CommandFactory{
 
     public ActionofCommandFactory(HistoryCommand historyCommand){
         if(historyCommand==null){
-            throw new IllegalArgumentException("HistoryCommand cannot be null");
+            throw new IllegalArgumentException("HistoryCommand cannot be null(Command Factory)");
         }
         this.historyCommand=historyCommand;
     }

@@ -20,7 +20,7 @@ public abstract class CanUndoCommand extends PlayerManagerCommand{
     public abstract void nowExecute();
 
     public  void afterExecute(){
-        
+        historyCommand.addCommand(this);
     };
     
     public abstract void undo();

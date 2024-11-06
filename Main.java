@@ -1,11 +1,11 @@
 import java.util.HashMap;
 import java.util.Scanner;
-import java.util.Vector;
+
 import Command.Command;
 import Command.HistoryCommand;
 import Factory.Command.CommandFactory;
 import Factory.Command.ConcreteFactory.*;
-import Player.Player;
+
 import Player.PlayerManager;
 
 public class Main {
@@ -16,7 +16,7 @@ public class Main {
         
 
         // Command Map
-        cmdFactoryMap.put("1", new CreatePlayerFactory(playerManager, historyCommand));
+        cmdFactoryMap.put("0", new CreatePlayerFactory(playerManager, historyCommand));
         // cmdFactoryMap.put("1", new AddHeroFactory());
         // cmdFactoryMap.put("2", new RemoveHeroFactory());
         // cmdFactoryMap.put("3", new SelectPlayerFactory());
@@ -24,7 +24,7 @@ public class Main {
         // cmdFactoryMap.put("5", new ShowPlayerDetailFactory());
         // cmdFactoryMap.put("6", new ChangePlayerNameFactory());
         cmdFactoryMap.put("7", new ShowAllPlayersFactory(playerManager));
-        // cmdFactoryMap.put("8", new SetCurrentPlayerFactory());
+        cmdFactoryMap.put("8", new SetCurrentPlayerFactory(playerManager, historyCommand));
         cmdFactoryMap.put("9", new UndoLastCommandFactory(historyCommand));
         // cmdFactoryMap.put("10", new RedoLastCommandFactory());
         // cmdFactoryMap.put("11", new ShowUndoRedoListFactory());
@@ -44,7 +44,7 @@ public class Main {
                 message += i + ": " + cmdName + "  ";
             }
             System.out.print(message);
-
+            System.out.print("The current Player is " + playerManager.getCurPlayer());
             System.out.print("Please input command:");
             // read user input
             Scanner scanner = new Scanner(System.in);

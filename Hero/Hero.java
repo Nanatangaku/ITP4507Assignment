@@ -39,7 +39,9 @@ public abstract class Hero {
         this.damage = damage;
     }
     
-    public abstract void callSkill();
+    public abstract void callSkill(
+        
+    );
     
     public abstract void showHeroStatus();
     

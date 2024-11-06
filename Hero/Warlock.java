@@ -30,4 +30,6 @@ public class Warlock extends Hero{
                 ", "+getHeroName() + ", Warlock, Hp: "+getHp() + 
                 ", Damage: "+getDamage() + ", Mp: "+mp);
     }    
+
+
 }

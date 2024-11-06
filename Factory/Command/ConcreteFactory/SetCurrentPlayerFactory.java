@@ -9,13 +9,13 @@ import Command.ConcreteCommand.SetCurrentPlayer;
 
 import Player.PlayerManager;
 
-public class SetCurrentPlayerFactory extends CanUndoCommandFactory {
+public class SetCurrentPlayerFactory extends PlayerManagerFactory {
 
-    public SetCurrentPlayerFactory(PlayerManager playerManager,HistoryCommand historyCommand) {
-        super(playerManager,historyCommand);
+    public SetCurrentPlayerFactory(PlayerManager playerManager) {
+        super(playerManager);
     }
     public Command createCommand() {
-        return new SetCurrentPlayer(playerManager,historyCommand);
+        return new SetCurrentPlayer(playerManager);
     }
     
 }

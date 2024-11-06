@@ -16,10 +16,20 @@ public class PlayerManager {
         }else if(Players.containsKey(player.getPlayerID())){
             System.out.println("Player ID already exist");
             return;
-        }else{
+        }
+        //if players size is 0, put the player and set it as current player
+        else if( Players.size() == 0){
+            //put the player and set it as current player
+            Players.put(player.getPlayerID(),player);
+            curPlayerID = player.getPlayerID();
+        }
+        
+        
+        
+        else{
             Players.put(player.getPlayerID(),player);
         }
-        curPlayerID = player.getPlayerID();
+
     }
 
     public Player getCurPlayer(){
@@ -32,7 +42,16 @@ public class PlayerManager {
     public String getCurPlayerID(){
         return curPlayerID;
     }
+    public String getCurPlayDetail(){
 
+
+        if(!Players.containsKey(curPlayerID)){
+            return "";
+        }
+        return "Current Player:\nID :" + Players.get(curPlayerID).getPlayerID() + " Name:" + Players.get(curPlayerID).getPlayerName()+"\n";
+
+
+    }
     public String getPlayer(){
         String PlayerList = "";
         for(HashMap.Entry<String,Player> entry : Players.entrySet()){

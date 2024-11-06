@@ -17,16 +17,16 @@ public class Main {
 
         // Command Map
         cmdFactoryMap.put("0", new CreatePlayerFactory(playerManager, historyCommand));
-        // cmdFactoryMap.put("1", new AddHeroFactory());
+        cmdFactoryMap.put("1", new AddHeroFactory(playerManager, historyCommand));
         // cmdFactoryMap.put("2", new RemoveHeroFactory());
         // cmdFactoryMap.put("3", new SelectPlayerFactory());
         // cmdFactoryMap.put("4", new CallHeroSkillFactory());
-        // cmdFactoryMap.put("5", new ShowPlayerDetailFactory());
+        cmdFactoryMap.put("5", new ShowPlayerDetailFactory(playerManager));
         cmdFactoryMap.put("6", new ChangePlayerNameFactory(playerManager));
         cmdFactoryMap.put("7", new ShowAllPlayersFactory(playerManager));
         cmdFactoryMap.put("8", new SetCurrentPlayerFactory(playerManager, historyCommand));
         cmdFactoryMap.put("9", new UndoLastCommandFactory(historyCommand));
-        // cmdFactoryMap.put("10", new RedoLastCommandFactory());
+        cmdFactoryMap.put("10", new RedoLastCommandFactory(playerManager,historyCommand));
         cmdFactoryMap.put("11", new ShowUndoRedoListFactory(historyCommand));
 
 

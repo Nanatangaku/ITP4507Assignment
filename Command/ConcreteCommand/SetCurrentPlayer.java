@@ -7,12 +7,12 @@ import Command.HistoryCommand;
 import Player.PlayerManager;
 import Command.PlayerManagerCommand;
 
-public class SetCurrentPlayer extends CanUndoCommand{
+public class SetCurrentPlayer extends PlayerManagerCommand{
 
-    public SetCurrentPlayer(PlayerManager PlayerManager,HistoryCommand historyCommand) {
-        super(PlayerManager,historyCommand);
+    public SetCurrentPlayer(PlayerManager playerManager) {
+        super(playerManager);
     }
-    public void nowExecute(){
+    public void execute(){
        
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the player ID You want to set : ");
@@ -21,8 +21,6 @@ public class SetCurrentPlayer extends CanUndoCommand{
         System.out.println("Current Player is set to : "+playerManager.getCurPlayerID());
         
     }
-    public void undo(){
 
-    }
     
 }

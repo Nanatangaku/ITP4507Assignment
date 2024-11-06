@@ -1,12 +1,10 @@
 package Command.ConcreteCommand;
 
-import java.util.Scanner;
-import java.util.Vector;
 
 import Command.CanUndoCommand;
 import Player.Player;
 import Command.HistoryCommand;
-import Factory.Command.Player.PlayerFactory;
+
 import Player.PlayerManager;
 public class CreatePlayer extends CanUndoCommand{
 
@@ -22,8 +20,7 @@ public class CreatePlayer extends CanUndoCommand{
         curPlayerID=playerManager.getCurPlayerID();
         playerManager.addPlayer(player);
         playerManager.setCurPlayer(player.getPlayerID());
-        System.out.print(playerManager.getPlayer());
-        System.out.print(historyCommand.getHis());
+
     }
 
 

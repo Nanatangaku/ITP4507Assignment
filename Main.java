@@ -27,7 +27,7 @@ public class Main {
         cmdFactoryMap.put("8", new SetCurrentPlayerFactory(playerManager, historyCommand));
         cmdFactoryMap.put("9", new UndoLastCommandFactory(historyCommand));
         // cmdFactoryMap.put("10", new RedoLastCommandFactory());
-        // cmdFactoryMap.put("11", new ShowUndoRedoListFactory());
+        cmdFactoryMap.put("11", new ShowUndoRedoListFactory(historyCommand));
 
 
         String command;
@@ -44,7 +44,7 @@ public class Main {
                 message += i + ": " + cmdName + "  ";
             }
             System.out.print(message);
-            System.out.print("The current Player is " + playerManager.getCurPlayer());
+
             System.out.print("Please input command:");
             // read user input
             Scanner scanner = new Scanner(System.in);

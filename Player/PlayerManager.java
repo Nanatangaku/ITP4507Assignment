@@ -1,12 +1,13 @@
 package Player;
 import java.util.HashMap;
 import Player.Player;
+import java.util.Scanner;
 public class PlayerManager {
     private String curPlayerID = "";
     private HashMap<String,Player> Players;
     public PlayerManager(){
         Players = new HashMap<String,Player>();
-        
+
     }
     public void addPlayer(Player player){
         if(player.getPlayerID() == null){
@@ -57,7 +58,18 @@ public class PlayerManager {
     }
 
 
-    
+    public void changeName(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the player ID You want to change name : ");
+        String playerID = scanner.nextLine();
+        if(Players.containsKey(playerID)){
+            System.out.println("Enter the new name : ");
+            String newName = scanner.nextLine();
+            Players.get(playerID).setPlayerName(newName);
+        }else{
+            System.out.println("Player ID does not exist");
+        }
+    }
 
     
 }

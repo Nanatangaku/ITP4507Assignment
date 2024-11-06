@@ -22,7 +22,7 @@ public class Main {
         // cmdFactoryMap.put("3", new SelectPlayerFactory());
         // cmdFactoryMap.put("4", new CallHeroSkillFactory());
         // cmdFactoryMap.put("5", new ShowPlayerDetailFactory());
-        // cmdFactoryMap.put("6", new ChangePlayerNameFactory());
+        cmdFactoryMap.put("6", new ChangePlayerNameFactory(playerManager));
         cmdFactoryMap.put("7", new ShowAllPlayersFactory(playerManager));
         cmdFactoryMap.put("8", new SetCurrentPlayerFactory(playerManager, historyCommand));
         cmdFactoryMap.put("9", new UndoLastCommandFactory(historyCommand));

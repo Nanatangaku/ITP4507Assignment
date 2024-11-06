@@ -77,18 +77,28 @@ public class PlayerManager {
     }
 
 
-    public void changeName(){
+    public void changeName(Player player){
+        //ask user to input new player name
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the player ID You want to change name : ");
-        String playerID = scanner.nextLine();
-        if(Players.containsKey(playerID)){
-            System.out.println("Enter the new name : ");
-            String newName = scanner.nextLine();
-            Players.get(playerID).setPlayerName(newName);
-        }else{
-            System.out.println("Player ID does not exist");
-        }
+        System.out.print("New Player Name:");
+        String newName = scanner.nextLine();
+        player.setPlayerName(newName);
+    
     }
 
-    
+    public Player getChangePlayerName(){
+        //ask user to input player ID
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Player ID:");
+        String playerID = scanner.nextLine();
+        //check if player ID exist
+        if(Players.containsKey(playerID)){
+            return Players.get(playerID);
+        }else{
+            System.out.println("Player ID does not exist");
+            return null;
+        }
+
+
+    }
 }

@@ -16,18 +16,18 @@ public class Main {
         PlayerManager playerManager = new PlayerManager();
 
         // Command Map
-        cmdFactoryMap.put("0", new CreatePlayerFactory(playerManager, historyCommand));
-        cmdFactoryMap.put("1", new AddHeroFactory(playerManager, historyCommand));
-        cmdFactoryMap.put("2", new RemoveHeroFactory(playerManager,historyCommand));
-        cmdFactoryMap.put("3", new SelectPlayerFactory());
-        cmdFactoryMap.put("4", new CallHeroSkillFactory(playerManager,historyCommand));
-        cmdFactoryMap.put("5", new ShowPlayerDetailFactory(playerManager));
-        cmdFactoryMap.put("6", new ChangePlayerNameFactory(playerManager));
-        cmdFactoryMap.put("7", new ShowAllPlayersFactory(playerManager));
-        cmdFactoryMap.put("8", new SetCurrentPlayerFactory(playerManager));
-        cmdFactoryMap.put("9", new UndoLastCommandFactory(historyCommand));
-        cmdFactoryMap.put("10", new RedoLastCommandFactory(playerManager,historyCommand));
-        cmdFactoryMap.put("11", new ShowUndoRedoListFactory(historyCommand));
+        cmdFactoryMap.put("CP", new CreatePlayerFactory(playerManager, historyCommand));
+        cmdFactoryMap.put("AF", new AddHeroFactory(playerManager, historyCommand));
+        cmdFactoryMap.put("RH", new RemoveHeroFactory(playerManager,historyCommand));
+        cmdFactoryMap.put("CHS", new CallHeroSkillFactory(playerManager,historyCommand));
+        cmdFactoryMap.put("SPD", new ShowPlayerDetailFactory(playerManager));
+        cmdFactoryMap.put("CPN", new ChangePlayerNameFactory(playerManager,historyCommand));
+        cmdFactoryMap.put("SAP", new ShowAllPlayersFactory(playerManager));
+        cmdFactoryMap.put("SCP", new SetCurrentPlayerFactory(playerManager));
+        cmdFactoryMap.put("ULC", new UndoLastCommandFactory(historyCommand));
+        cmdFactoryMap.put("RLC", new RedoLastCommandFactory(playerManager,historyCommand));
+        cmdFactoryMap.put("SURL", new ShowUndoRedoListFactory(historyCommand));
+        cmdFactoryMap.put("EXIT", new ExitFactory());
 
 
         String command;

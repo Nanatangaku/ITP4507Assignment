@@ -20,7 +20,10 @@ public class RemoveHeroFactory extends CanUndoCommandFactory {
     }
     
     public Command createCommand() {
-        return new RemoveHero(playerManager,historyCommand,scanner);
+        System.out.println("Please input the hero id you want to remove: ");
+
+                String heroId = scanner.nextLine();
+        return new RemoveHero(playerManager,historyCommand,heroId);
     }
 
 

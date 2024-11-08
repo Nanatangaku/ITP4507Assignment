@@ -13,11 +13,13 @@ import Hero.Hero;
 
 public class RemoveHero extends CanUndoCommand{
     Hero hero;
-    Scanner scanner;
+    String heroId;
+
     Stack<Hero> DisablleHeroStack = new Stack<Hero>();
-    public RemoveHero(PlayerManager playerManager,HistoryCommand historyCommand,Scanner scanner){
+    public RemoveHero(PlayerManager playerManager,HistoryCommand historyCommand,String heroId) {
         super(playerManager,historyCommand);
-        this.scanner = scanner;
+        this.heroId = heroId;
+
     }
 
 
@@ -28,8 +30,7 @@ public class RemoveHero extends CanUndoCommand{
         //add the hero to the history command list
 
                 Vector<Hero> heroList = playerManager.getCurPlayer().getHeroes();
-                System.out.println("Please input the hero id you want to remove: ");
-                String heroId = scanner.nextLine();
+                
                 //find the hero id in the Vector hero
                 for (int i = 0; i < heroList.size(); i++) {
                     if (heroList.get(i).getHeroID().equals(heroId)) {
@@ -37,6 +38,8 @@ public class RemoveHero extends CanUndoCommand{
                         DisablleHeroStack.push(hero);
                         heroList.remove(i);
                         return;
+                    }else{
+
                     }
                 }
 

@@ -28,7 +28,6 @@ public class HistoryCommand {
         }
         CanUndoCommand command = undoStack.pop();
 
-        redoing = true;
         command.undo();
         redoStack.push(command);
 
@@ -39,11 +38,10 @@ public class HistoryCommand {
             System.out.println("No command to redo");
             return;
         }
-        redoing=true;
+        redoing = false;
         CanUndoCommand command=redoStack.pop();
         command.execute();
-        undoStack.push(command);
-        redoing=false;
+       
     }
     public String getHis(){
    

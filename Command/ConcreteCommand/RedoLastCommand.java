@@ -22,4 +22,6 @@ public class RedoLastCommand extends CanUndoCommand{
     
     }
     
+    public void afterExecute(){
+    };
 }

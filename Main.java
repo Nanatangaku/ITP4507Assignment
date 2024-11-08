@@ -55,7 +55,7 @@ public class Main {
 
             System.out.println();
             System.out.println("Fantastic World (FW)");
-            System.out.println("c = create player, g = set current player, a = add hero, m = call hero skill, d = delete hero, s = show player, p = display all players, t = change player’s name, u = undo, r = redo, l = list undo/redo, x = exit system");
+            System.out.println("c = create player, g = set current player, a = add hero, m = call hero skill, d = delete hero, s = show player, p = display all players, t = change player's name, u = undo, r = redo, l = list undo/redo, x = exit system");
             System.out.print( playerManager.getCurPlayDetail());
             System.out.print("Please enter command [ c | g | a | m | d | s | p | t | u | r | l | x ] :-");
 

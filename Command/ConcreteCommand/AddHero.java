@@ -18,12 +18,12 @@ public class AddHero extends CanUndoCommand{
 
         //get the current Player and add the hero to the player
         playerManager.getCurPlayer().addHero(hero);
-        System.out.print(playerManager.getCurPlayer().getHeroes().get(0).getHeroName());
+     
         
       
     }
     public void undo(){
-
+        playerManager.getCurPlayer().removeHero(hero);
     }
 
     public String toString(){

@@ -18,15 +18,20 @@ public class ChangePlayerName extends CanUndoCommand {
   public void nowExecute() {
     Player player = playerManager.getChangePlayerName();
     // System.out.print("before name : " + player.getPlayerName());
-    playerMemento = new PlayerMemento(player);
-    playerManager.changeName(player);
+    
+    if(playerManager.changeName(player)==true){
+      playerMemento = new PlayerMemento(player);
+    }
     // System.out.print("after name : " + player.getPlayerName());
+    
 
   }
 
   public void undo() {
-
     playerMemento.restore();
+  }
+  public String toString(){
+    return "Command:Change Player Name";
   }
 
 }

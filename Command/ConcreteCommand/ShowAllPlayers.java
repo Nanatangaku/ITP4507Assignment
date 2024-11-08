@@ -19,5 +19,9 @@ public class ShowAllPlayers extends PlayerManagerCommand {
         public void execute() {
               System.out.print(playerManager.getPlayer());
         }
+        public String toString(){
+            return "Command:Show All Players";
+    
+        }
 
 }

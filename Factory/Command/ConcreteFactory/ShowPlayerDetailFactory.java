@@ -1,5 +1,7 @@
 package Factory.Command.ConcreteFactory;
 
+import java.util.Scanner;
+
 import Command.Command;
 
 import Factory.Command.PlayerManagerFactory;
@@ -9,8 +11,8 @@ import Command.ConcreteCommand.ShowPlayerDetail;
 
 public class ShowPlayerDetailFactory extends  PlayerManagerFactory {
 
-    public ShowPlayerDetailFactory(PlayerManager playerManager) {
-        super(playerManager);
+    public ShowPlayerDetailFactory(PlayerManager playerManager,Scanner scanner) {
+        super(playerManager,scanner);
     }
 
     public Command createCommand() {

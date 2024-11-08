@@ -7,7 +7,11 @@ public class AddHero extends CanUndoCommand{
     private Hero hero;
     public AddHero(PlayerManager playerManager,HistoryCommand historyCommand,Hero hero) {
         super(playerManager, historyCommand);
-        this.hero = hero;
+        if(hero == null){
+            return;
+        }else{
+            this.hero = hero;
+        }
     }
 
     public void nowExecute(){
@@ -20,5 +24,9 @@ public class AddHero extends CanUndoCommand{
     }
     public void undo(){
 
+    }
+
+    public String toString(){
+        return "Command:Add Hero";
     }
 }

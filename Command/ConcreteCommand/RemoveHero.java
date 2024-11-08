@@ -1,7 +1,9 @@
 package Command.ConcreteCommand;
 
+
 import java.util.Vector;
 import java.util.Scanner;
+import java.util.Stack;
 
 import Command.CanUndoCommand;
 import Player.PlayerManager;
@@ -11,9 +13,11 @@ import Hero.Hero;
 
 public class RemoveHero extends CanUndoCommand{
     Hero hero;
-    public RemoveHero(PlayerManager playerManager,HistoryCommand historyCommand){
+    Scanner scanner;
+    Stack<Hero> DisablleHeroStack = new Stack<Hero>();
+    public RemoveHero(PlayerManager playerManager,HistoryCommand historyCommand,Scanner scanner){
         super(playerManager,historyCommand);
-
+        this.scanner = scanner;
     }
 
 
@@ -24,13 +28,13 @@ public class RemoveHero extends CanUndoCommand{
         //add the hero to the history command list
 
                 Vector<Hero> heroList = playerManager.getCurPlayer().getHeroes();
-                Scanner scanner = new Scanner(System.in);
                 System.out.println("Please input the hero id you want to remove: ");
                 String heroId = scanner.nextLine();
                 //find the hero id in the Vector hero
                 for (int i = 0; i < heroList.size(); i++) {
                     if (heroList.get(i).getHeroID() == heroId) {
                         hero = heroList.get(i);
+                        DisablleHeroStack.push(hero);
                         heroList.remove(i);
                         historyCommand.addCommand(this);
                         return;
@@ -44,7 +48,10 @@ public class RemoveHero extends CanUndoCommand{
     }
     public void undo(){
         //add the hero back to the user hero list
-        playerManager.getCurPlayer().getHeroes().add(hero);
+        playerManager.getCurPlayer().getHeroes().add(DisablleHeroStack.pop());
     }
+    public String toString(){
+        return "Command:Remove Hero";
     
+    }
 }

@@ -2,11 +2,16 @@ package Player;
 import java.util.HashMap;
 import Player.Player;
 import java.util.Scanner;
+
+import InputOutput.inputOutput;
 public class PlayerManager {
+    
     private String curPlayerID = "";
     private HashMap<String,Player> Players;
-    public PlayerManager(){
+   Scanner scanner;
+    public PlayerManager(Scanner scanner){
         Players = new HashMap<String,Player>();
+        this.scanner = scanner;
 
     }
     public void addPlayer(Player player){
@@ -29,6 +34,10 @@ public class PlayerManager {
         else{
             Players.put(player.getPlayerID(),player);
         }
+        //if players != 0, when create new player, set it to current player
+        if(Players.size() != 0){
+            curPlayerID = player.getPlayerID();
+        }
 
     }
 
@@ -48,14 +57,14 @@ public class PlayerManager {
         if(!Players.containsKey(curPlayerID)){
             return "";
         }
-        return "Current Player:\nID :" + Players.get(curPlayerID).getPlayerID() + " Name:" + Players.get(curPlayerID).getPlayerName()+"\n";
+        return "The Current Player is ID: " + Players.get(curPlayerID).getPlayerID() + " Name: " + Players.get(curPlayerID).getPlayerName()+"\n";
 
 
     }
     public String getPlayer(){
         String PlayerList = "";
         for(HashMap.Entry<String,Player> entry : Players.entrySet()){
-            PlayerList += "Player ID: " + entry.getKey() + " Player Name: " + entry.getValue().getPlayerName() + "\n";
+            PlayerList += "Player ID: " + entry.getKey() + ", Player Name: " + entry.getValue().getPlayerName() + "\n";
         }
         return PlayerList;
     }
@@ -77,18 +86,26 @@ public class PlayerManager {
     }
 
 
-    public void changeName(Player player){
+    public boolean changeName(Player player){
         //ask user to input new player name
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("New Player Name:");
+      
+        System.out.print("Please input new name of the current player:-");
         String newName = scanner.nextLine();
-        player.setPlayerName(newName);
-    
+        if(newName != "" || newName != null){
+            player.setPlayerName(newName);
+            System.out.print("Player’s name is updated.");
+            return true;
+        }else{
+            System.out.println("Player Name cannot be null");
+            return false;
+        }
+       
+        
     }
 
     public Player getChangePlayerName(){
         //ask user to input player ID
-        Scanner scanner = new Scanner(System.in);
+        
         System.out.print("Player ID:");
         String playerID = scanner.nextLine();
         //check if player ID exist

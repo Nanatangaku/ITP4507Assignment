@@ -1,6 +1,8 @@
 package Factory.Command.ConcreteFactory;
 
 
+import java.util.Scanner;
+
 import Command.Command;
 import Command.HistoryCommand;
 import Factory.Command.CanUndoCommandFactory;
@@ -11,11 +13,11 @@ import Player.PlayerManager;
 
 public class SetCurrentPlayerFactory extends PlayerManagerFactory {
 
-    public SetCurrentPlayerFactory(PlayerManager playerManager) {
-        super(playerManager);
+    public SetCurrentPlayerFactory(PlayerManager playerManager,Scanner scanner) {
+        super(playerManager,scanner);
     }
     public Command createCommand() {
-        return new SetCurrentPlayer(playerManager);
+        return new SetCurrentPlayer(playerManager,scanner);
     }
     
 }

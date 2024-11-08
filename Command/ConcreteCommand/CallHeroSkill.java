@@ -13,8 +13,10 @@ import Hero.*;
 
 public class CallHeroSkill extends CanUndoCommand{
     HeroMemento memento;
-    public CallHeroSkill(PlayerManager playerManager, HistoryCommand historyCommand){
+    Scanner scanner;
+    public CallHeroSkill(PlayerManager playerManager, HistoryCommand historyCommand, Scanner scanner){
         super(playerManager, historyCommand);
+        this.scanner = scanner;
     }
 
     public void nowExecute(){
@@ -37,8 +39,13 @@ public class CallHeroSkill extends CanUndoCommand{
                     memento = new WarriorMemento((Warrior)heroList.get(i));
                 }
                 Hero hero = heroList.get(i);
+                System.out.println("Hero status before calling the skill:");
+                hero.showHeroStatus();
                 hero.callSkill();
                 historyCommand.addCommand(this);
+                //show the hero status after calling the skill
+                System.out.println("Hero status after calling the skill:");
+                hero.showHeroStatus();
                 return;
             }
         }
@@ -52,5 +59,8 @@ public class CallHeroSkill extends CanUndoCommand{
     public void undo(){
         memento.restore();
     }
-    
+
+    public String toString(){
+        return "Command:Call Hero Skill";
+    }
 }

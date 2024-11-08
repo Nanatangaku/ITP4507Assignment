@@ -16,19 +16,21 @@ public class ShowPlayerDetail extends PlayerManagerCommand {
 
     public void execute() {
         Player player = playerManager.getCurPlayer();
-        System.out.print("Player Name: " + player.getPlayerName());
+        System.out.println("Player Name: " + player.getPlayerName());
         // print the hero that current player has
         // use array list to store the hero
         Vector<Hero> heroList = playerManager.getCurPlayer().getHeroes();
-        String herolist = "Heros: \n";
+        System.out.print("Hero List: \n");
 
         for (int i = 0; i < heroList.size(); i++) {
-            // print the pattern like Hero ID: , Hero Name: , Hero type:, Hero HP:, Damage: the hero type will be show in class so check it from which class 
-            // , Defense Point:
             heroList.get(i).showHeroStatus();
-            System.out.println();
+
         }
 
+    }
+    public String toString(){
+        return "Command:Show Player Detail";
+    
     }
 
 }

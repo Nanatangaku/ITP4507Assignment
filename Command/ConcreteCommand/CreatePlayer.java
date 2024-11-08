@@ -30,5 +30,7 @@ public class CreatePlayer extends CanUndoCommand{
        
 
     }
-    
+    public String toString(){
+        return "Command:Create Player";
+    }
 }

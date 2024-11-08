@@ -16,5 +16,9 @@ public class UndoLastCommand extends ActionofCommand{
         historyCommand.undoHisCmd();
 
     }
+    public String toString(){
+        return "Command:Undo Last Command";
+    
+    }
    
 }

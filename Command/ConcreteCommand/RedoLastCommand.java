@@ -17,5 +17,9 @@ public class RedoLastCommand extends CanUndoCommand{
     public void undo(){
         historyCommand.undoHisCmd();
     }
+    public String toString(){
+        return "Command:Redo Last Command";
+    
+    }
     
 }

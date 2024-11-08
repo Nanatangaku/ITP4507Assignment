@@ -8,19 +8,23 @@ import Player.PlayerManager;
 import Command.PlayerManagerCommand;
 
 public class SetCurrentPlayer extends PlayerManagerCommand{
-
-    public SetCurrentPlayer(PlayerManager playerManager) {
+    Scanner scanner;
+    public SetCurrentPlayer(PlayerManager playerManager, Scanner scanner) {
         super(playerManager);
+        this.scanner = scanner;
     }
     public void execute(){
        
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the player ID You want to set : ");
+   
+        System.out.println("Please input player ID:- ");
         String playerID = scanner.nextLine();
         playerManager.setCurPlayer(playerID);
-        System.out.println("Current Player is set to : "+playerManager.getCurPlayerID());
+        System.out.println("Changed current player to "+playerManager.getCurPlayerID());
         
     }
 
+    public String toString(){
+        return "Command:Set Current Player";
     
+    }
 }

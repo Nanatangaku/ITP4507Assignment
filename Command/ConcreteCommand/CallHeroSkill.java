@@ -20,7 +20,6 @@ public class CallHeroSkill extends CanUndoCommand{
     }
 
     public void nowExecute(){
-        Scanner scanner = new Scanner(System.in);
         System.out.print("Please input the hero ID:");
         String heroID = scanner.nextLine();
         Vector <Hero> heroList = playerManager.getCurPlayer().getHeroes();

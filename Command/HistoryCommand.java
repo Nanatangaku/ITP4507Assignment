@@ -31,7 +31,7 @@ public class HistoryCommand {
         redoing = true;
         command.undo();
         redoStack.push(command);
-        redoing = false;
+
     }
 
     public void redoHisCmd(){

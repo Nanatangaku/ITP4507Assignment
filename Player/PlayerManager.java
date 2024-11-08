@@ -1,9 +1,8 @@
 package Player;
 import java.util.HashMap;
-import Player.Player;
+
 import java.util.Scanner;
 
-import InputOutput.inputOutput;
 public class PlayerManager {
     
     private String curPlayerID = "";
@@ -46,7 +45,8 @@ public class PlayerManager {
             System.out.println("Player ID does not exist");
             return null;
     }
-    return Players.get(curPlayerID);
+        //return the curplayer's hero list
+        return Players.get(curPlayerID);
     }
     public String getCurPlayerID(){
         return curPlayerID;

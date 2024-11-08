@@ -39,8 +39,9 @@ public class Player {
     }
     
     public void removeHero(Hero hero) {
-        
         heroes.remove(hero);
+        
+        
     }
     
     public void showPlayerDetails(){

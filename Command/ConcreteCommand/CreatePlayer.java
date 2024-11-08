@@ -13,7 +13,11 @@ public class CreatePlayer extends CanUndoCommand{
 
     public CreatePlayer(PlayerManager playermanger, HistoryCommand historyCommand, Player player) {
         super(playermanger, historyCommand);
-        this.player = player;
+        if(player==null){
+            throw new IllegalArgumentException("Player cannot be null");
+        }else{
+            this.player=player;
+        }
 
     }
     public void nowExecute(){

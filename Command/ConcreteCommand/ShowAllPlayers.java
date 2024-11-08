@@ -2,9 +2,8 @@ package Command.ConcreteCommand;
 
 
 
-import Command.Command;
 import Command.PlayerManagerCommand;
-import Player.Player;
+
 import Player.PlayerManager;
 
 

@@ -2,8 +2,7 @@ package Command.ConcreteCommand;
 
 import java.util.Scanner;
 
-import Command.CanUndoCommand;
-import Command.HistoryCommand;
+
 import Player.PlayerManager;
 import Command.PlayerManagerCommand;
 

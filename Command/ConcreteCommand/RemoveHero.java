@@ -32,11 +32,10 @@ public class RemoveHero extends CanUndoCommand{
                 String heroId = scanner.nextLine();
                 //find the hero id in the Vector hero
                 for (int i = 0; i < heroList.size(); i++) {
-                    if (heroList.get(i).getHeroID() == heroId) {
+                    if (heroList.get(i).getHeroID().equals(heroId)) {
                         hero = heroList.get(i);
                         DisablleHeroStack.push(hero);
                         heroList.remove(i);
-                        historyCommand.addCommand(this);
                         return;
                     }
                 }

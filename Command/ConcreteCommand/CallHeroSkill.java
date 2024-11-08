@@ -42,7 +42,6 @@ public class CallHeroSkill extends CanUndoCommand{
                 System.out.println("Hero status before calling the skill:");
                 hero.showHeroStatus();
                 hero.callSkill();
-                historyCommand.addCommand(this);
                 //show the hero status after calling the skill
                 System.out.println("Hero status after calling the skill:");
                 hero.showHeroStatus();

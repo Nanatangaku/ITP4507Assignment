@@ -1,5 +1,5 @@
 package Command;
-import Command.HistoryCommand;
+
 import Player.PlayerManager;
 
 public abstract class CanUndoCommand extends PlayerManagerCommand{

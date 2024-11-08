@@ -25,6 +25,9 @@ public class CreatePlayerFactory extends CanUndoCommandFactory {
         String playID = scanner.nextLine();
         System.out.print("Player Name:");
         String playerName = scanner.nextLine();
+        if(playID == null || playerName == null || playID.isEmpty() || playerName.isEmpty()){
+            return new CreatePlayer(playerManager, historyCommand, null);
+        }
         Player player = new Player(playID, playerName);
         return new CreatePlayer(playerManager, historyCommand, player);
     }

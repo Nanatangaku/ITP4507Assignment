@@ -10,19 +10,22 @@ import Player.Player;
 
 public class ChangePlayerName extends CanUndoCommand {
   PlayerMemento playerMemento;
+  Player player;
+  String newName;
 
-  public ChangePlayerName(PlayerManager playerManager, HistoryCommand historyCommand) {
+  public ChangePlayerName(PlayerManager playerManager, HistoryCommand historyCommand,Player player,String newName) {
     super(playerManager, historyCommand);
+    if(player==null){
+      throw new IllegalArgumentException("Player cannot be null");
+    }else{
+      this.player=player;
+      this.newName = newName;
+    }
   }
 
   public void nowExecute() {
-    Player player = playerManager.getChangePlayerName();
-    // System.out.print("before name : " + player.getPlayerName());
-    
-    if(playerManager.changeName(player)==true){
-      playerMemento = new PlayerMemento(player);
-    }
-    // System.out.print("after name : " + player.getPlayerName());
+    playerMemento = new PlayerMemento(player);
+    player.setPlayerName(newName);
     
 
   }

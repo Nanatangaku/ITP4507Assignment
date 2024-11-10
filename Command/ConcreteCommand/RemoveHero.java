@@ -13,36 +13,21 @@ import Hero.Hero;
 
 public class RemoveHero extends CanUndoCommand{
     Hero hero;
-    String heroId;
+
 
     Stack<Hero> DisablleHeroStack = new Stack<Hero>();
-    public RemoveHero(PlayerManager playerManager,HistoryCommand historyCommand,String heroId) {
+    public RemoveHero(PlayerManager playerManager,HistoryCommand historyCommand,Hero hero) {
         super(playerManager,historyCommand);
-        this.heroId = heroId;
+        this.hero = hero;
 
     }
 
 
     public void nowExecute(){
 
-        //get the current user hero, ask user to input hero id to remove 
         //remove the hero from the user hero list
-        //add the hero to the history command list
-
-                Vector<Hero> heroList = playerManager.getCurPlayer().getHeroes();
-                
-                //find the hero id in the Vector hero
-                for (int i = 0; i < heroList.size(); i++) {
-                    if (heroList.get(i).getHeroID().equals(heroId)) {
-                        hero = heroList.get(i);
-                        DisablleHeroStack.push(hero);
-                        heroList.remove(i);
-                        return;
-                    }else{
-
-                    }
-                }
-
+        playerManager.getCurPlayer().getHeroes().remove(hero);
+        DisablleHeroStack.push(hero);
 
 
 

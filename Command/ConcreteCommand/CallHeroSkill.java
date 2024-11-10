@@ -14,39 +14,27 @@ import Hero.*;
 public class CallHeroSkill extends CanUndoCommand{
     HeroMemento memento;
     Scanner scanner;
-    public CallHeroSkill(PlayerManager playerManager, HistoryCommand historyCommand, Scanner scanner){
+    Hero hero;
+    public CallHeroSkill(PlayerManager playerManager, HistoryCommand historyCommand, Scanner scanner,Hero hero){
         super(playerManager, historyCommand);
         this.scanner = scanner;
+        if(hero != null){
+            this.hero = hero;
+        }
     }
 
     public void nowExecute(){
-        System.out.print("Please input the hero ID:");
-        String heroID = scanner.nextLine();
-        Vector <Hero> heroList = playerManager.getCurPlayer().getHeroes();
 
-        if (playerManager.getCurPlayer() == null) {
-            System.out.println("Please select a player first!");
-            return;
+        System.out.print("Hero Status before calling skill: ");
+        hero.showHeroStatus();
+        if(hero.getClass() == Warrior.class){
+            memento = new WarriorMemento((Warrior)hero);
+        }else if(hero.getClass() == Warlock.class){
+            memento = new WarlockMemento((Warlock)hero);
         }
-
-
-        for (int i = 0; i < heroList.size(); i++) {
-            if (heroList.get(i).getHeroID().equals(heroID)) {
-                if(heroList.get(i) instanceof Warlock){
-                    memento = new WarlockMemento((Warlock)heroList.get(i));
-                }else{
-                    memento = new WarriorMemento((Warrior)heroList.get(i));
-                }
-                Hero hero = heroList.get(i);
-                System.out.println("Hero status before calling the skill:");
-                hero.showHeroStatus();
-                hero.callSkill();
-                //show the hero status after calling the skill
-                System.out.println("Hero status after calling the skill:");
-                hero.showHeroStatus();
-                return;
-            }
-        }
+        hero.callSkill();
+        System.out.print("Hero Status after calling skill: ");
+        hero.showHeroStatus();
 
         
       

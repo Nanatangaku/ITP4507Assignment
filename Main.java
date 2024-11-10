@@ -34,25 +34,7 @@ public class Main {
  
        
         String command;
-        while (true) {
-            // System.out.println();
-            // String message = "Command list: ";
-            // for (String i : cmdFactoryMap.keySet()) {
-            //     String cmdName = cmdFactoryMap.get(i).getClass().getName();
-            //     cmdName = cmdName.substring(cmdName.lastIndexOf(".") + 1);
-            //     // Remove "Factory" from the end of the class name to make it more readable
-            //     if (cmdName.endsWith("Factory")) {
-            //         cmdName = cmdName.substring(0, cmdName.length() - "Factory".length());
-            //     }
-            //     message += i + ": " + cmdName + "  ";
-            // }
-            // System.out.println(message);
-            // System.out.print(playerManager.getCurPlayDetail());
-            // System.out.print("Please input command:");
-            // read user input
-
-
-
+        while (true) {    
             System.out.println();
             System.out.println("Fantastic World (FW)");
             System.out.println("c = create player, g = set current player, a = add hero, m = call hero skill, d = delete hero, s = show player, p = display all players, t = change player's name, u = undo, r = redo, l = list undo/redo, x = exit system");
@@ -71,7 +53,7 @@ public class Main {
                     continue;
                 cmd.execute();
             } catch (Exception e) {
-                // System.out.print(e.getMessage() + " Invalid command!(Main 63)");
+                System.out.println(e.getMessage());
             }
 
         }

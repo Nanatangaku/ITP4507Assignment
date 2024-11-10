@@ -18,7 +18,7 @@ public class SetCurrentPlayer extends PlayerManagerCommand{
         System.out.println("Please input player ID:- ");
         String playerID = scanner.nextLine();
         playerManager.setCurPlayer(playerID);
-        System.out.println("Changed current player to "+playerManager.getCurPlayerID());
+        
         
     }
 

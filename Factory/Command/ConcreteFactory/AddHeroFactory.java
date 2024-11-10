@@ -6,13 +6,11 @@ import java.util.Scanner;
 
 import Command.Command;
 import Factory.Command.CanUndoCommandFactory;
-
+import Factory.Command.Hero.HeroFactory;
 import Command.ConcreteCommand.AddHero;
 import Command.HistoryCommand;
 import Player.PlayerManager;
 import Hero.Hero;
-import Hero.Warlock;
-import Hero.Warrior;
 
 public class AddHeroFactory extends CanUndoCommandFactory {
 
@@ -31,33 +29,31 @@ public class AddHeroFactory extends CanUndoCommandFactory {
         String[] heroInfoArray = heroInfo.split(",");
         //if input is not in the format of id,name, return error message
         if(heroInfoArray.length != 2){
-            System.out.print("You must input the format like \"id,name \"");
-            return null;
+            throw new IllegalArgumentException("The hero information is not in the correct format!,You must input like \"id,name\"");
         }
         String heroID = heroInfoArray[0];
         String heroName = heroInfoArray[1];
+
+
+        int count1 =  heroID.replace(" ", "").length();
+        int count2 =  heroName.replace(" ", "").length();
+        if(count1 ==  0 || count2 == 0){
+            throw new IllegalArgumentException("The hero information is not in the correct format!,You must input like \"id,name\"");
+        }
+        
         System.out.print("Hero Type (1 = Warrior | 2 = Warlock ):-");
         String heroChoose = scanner.nextLine();
+        if(heroChoose.equals("")){
+            throw new IllegalArgumentException("The hero type is wrong!");
+        }
     
-   
-        
+        HeroFactory heroFactory = new HeroFactory();
+        Hero hero =  heroFactory.CreateHero(heroID, heroName,heroChoose);
+        return new AddHero(playerManager, historyCommand, hero);
 
   
 
-        if(heroChoose.equals("1")){
-            hero = new Warlock(heroID, heroName);
-            System.out.print(" Warlock is added ");
-            return new AddHero(playerManager, historyCommand, hero);
-    }else if(heroChoose.equals("2")){
-        hero = new Warrior(heroID, heroName);
-        System.out.print(" Warrior is added ");
-        return new AddHero(playerManager, historyCommand, hero);
-    }else{
-        System.out.print(" Invalid hero type ");
-        //return error message
-    }
-    //just end the function and back to main
-    return null;
+
     
 }
 }

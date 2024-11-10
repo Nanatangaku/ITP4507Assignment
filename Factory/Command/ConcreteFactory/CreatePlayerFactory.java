@@ -5,7 +5,7 @@ import java.util.Scanner;
 import Command.Command;
 import Command.HistoryCommand;
 import Factory.Command.CanUndoCommandFactory;
-
+import Factory.Command.Player.PlayerFactory;
 import Command.ConcreteCommand.CreatePlayer;
 
 import Player.PlayerManager;
@@ -25,10 +25,9 @@ public class CreatePlayerFactory extends CanUndoCommandFactory {
         String playID = scanner.nextLine();
         System.out.print("Player Name:");
         String playerName = scanner.nextLine();
-        if(playID == null || playerName == null || playID.isEmpty() || playerName.isEmpty()){
-            return new CreatePlayer(playerManager, historyCommand, null);
-        }
-        Player player = new Player(playID, playerName);
+        PlayerFactory playerFactory = new PlayerFactory();
+        Player player = playerFactory.createPlayer(playID, playerName);
+
         return new CreatePlayer(playerManager, historyCommand, player);
     }
     

@@ -42,7 +42,7 @@ public class PlayerManager {
 
     public Player getCurPlayer(){
         if(!Players.containsKey(curPlayerID)){
-            System.out.println("Player ID does not exist");
+            System.out.println("No player is created");
             return null;
     }
         //return the curplayer's hero list
@@ -72,6 +72,7 @@ public class PlayerManager {
     public void setCurPlayer(String playerID){
         if(Players.containsKey(playerID)){
             curPlayerID = playerID;
+            System.out.println("Changed current player to "+ getCurPlayerID());
         }else{
             System.out.println("Player ID does not exist");
         }
@@ -102,7 +103,14 @@ public class PlayerManager {
        
         
     }
-
+    public Player getPlayerByID(String playerID){
+        if(Players.containsKey(playerID)){
+            return Players.get(playerID);
+        }else{
+            System.out.println("Player ID does not exist");
+            return null;
+        }
+    }
     public Player getChangePlayerName(){
         //ask user to input player ID
         
@@ -112,8 +120,7 @@ public class PlayerManager {
         if(Players.containsKey(playerID)){
             return Players.get(playerID);
         }else{
-            System.out.println("Player ID does not exist");
-            return null;
+            throw new IllegalArgumentException("Cant change player name as player ID does not exist");
         }
 
 
